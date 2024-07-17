@@ -7,6 +7,7 @@ import gift.dto.request.OptionRequestDto;
 import gift.dto.response.OptionResponseDto;
 import gift.exception.EntityNotFoundException;
 import gift.exception.NameDuplicationException;
+import gift.exception.OptionQuantityNotMinusException;
 import gift.repository.option.OptionRepository;
 import gift.repository.product.ProductRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -124,6 +125,34 @@ class OptionServiceTest {
                         .isInstanceOf(EntityNotFoundException.class)
                         .hasMessage("해당 옵션은 존재하지 않습니다.")
         );
+    }
+
+    @Test
+    @DisplayName("옵션 수량 감소 테스트")
+    void 옵션_수량_감소_테스트(){
+        //given
+        Long validOptionId = 1L;
+        Long inValidOptionId = 2L;
+
+        Option option = new Option("TEST", 300);
+
+        given(optionRepository.findById(validOptionId)).willReturn(Optional.of(option));
+        given(optionRepository.findById(inValidOptionId)).willReturn(Optional.empty());
+
+        //when
+        OptionResponseDto optionResponseDto = optionService.updateOptionQuantity(validOptionId, 200);
+
+        //then
+        assertAll(
+                () -> assertThat(optionResponseDto.name()).isEqualTo(option.getName()),
+                () -> assertThat(optionResponseDto.quantity()).isEqualTo(100),
+                () -> assertThatThrownBy(() -> optionService.updateOptionQuantity(inValidOptionId, 100))
+                        .isInstanceOf(EntityNotFoundException.class)
+                        .hasMessage("해당 옵션은 존재하지 않습니다."),
+        () -> assertThatThrownBy(() -> optionService.updateOptionQuantity(validOptionId, 400))
+                .isInstanceOf(OptionQuantityNotMinusException.class)
+        );
+
     }
 
 }

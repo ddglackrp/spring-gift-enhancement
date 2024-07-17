@@ -6,6 +6,7 @@ import gift.dto.request.OptionRequestDto;
 import gift.dto.response.OptionResponseDto;
 import gift.exception.EntityNotFoundException;
 import gift.exception.NameDuplicationException;
+import gift.exception.OptionQuantityNotMinusException;
 import gift.repository.option.OptionRepository;
 import gift.repository.product.ProductRepository;
 import org.springframework.stereotype.Service;
@@ -51,6 +52,19 @@ public class OptionService {
         return optionRepository.findOptionsByProductId(productId).stream()
                 .map(OptionResponseDto::from)
                 .collect(Collectors.toList());
+    }
+
+    public OptionResponseDto updateOptionQuantity(Long optionId, int quantity){
+        Option findOption = optionRepository.findById(optionId)
+                .orElseThrow(() -> new EntityNotFoundException("해당 옵션은 존재하지 않습니다."));
+
+        if(findOption.getQuantity() < quantity){
+            throw new OptionQuantityNotMinusException();
+        }
+
+        findOption.updateQuantity(quantity);
+
+        return OptionResponseDto.from(findOption);
     }
 
     @Transactional
