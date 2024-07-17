@@ -20,6 +20,8 @@ public class Category extends TimeStamp {
     @Column(nullable = false)
     private String color;
 
+    @OneToMany(mappedBy = "category")
+    private List<Product> products = new ArrayList<>();
     public Category() {
     }
 
@@ -27,9 +29,6 @@ public class Category extends TimeStamp {
         this.name = name;
         this.color = color;
     }
-
-    @OneToMany(mappedBy = "category")
-    private List<Product> products = new ArrayList<>();
 
     public Long getId() {
         return id;

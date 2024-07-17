@@ -54,6 +54,7 @@ public class OptionService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public OptionResponseDto updateOptionQuantity(Long optionId, int quantity){
         Option findOption = optionRepository.findById(optionId)
                 .orElseThrow(() -> new EntityNotFoundException("해당 옵션은 존재하지 않습니다."));

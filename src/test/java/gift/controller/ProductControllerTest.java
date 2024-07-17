@@ -1,5 +1,6 @@
 package gift.controller;
 
+import gift.controller.product.ProductController;
 import gift.dto.request.OptionRequestDto;
 import gift.dto.request.ProductRequestDto;
 import gift.dto.response.CategoryResponseDto;
@@ -219,7 +220,7 @@ class ProductControllerTest {
 
         //excepted
         mvc.perform(post("/products/{id}/options", 1L)
-                        .param("optionName", "TEST")
+                        .param("optionName", "테스트")
                         .param("optionQuantity", "1"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/products/{id}/options"))

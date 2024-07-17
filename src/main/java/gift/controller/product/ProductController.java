@@ -1,4 +1,4 @@
-package gift.controller;
+package gift.controller.product;
 
 import gift.dto.request.OptionRequestDto;
 import gift.dto.request.ProductRequestDto;
@@ -24,7 +24,6 @@ public class ProductController {
 
     private final ProductService productService;
     private final CategoryService categoryService;
-
     private final OptionService optionService;
 
     public ProductController(ProductService productService,
@@ -104,7 +103,6 @@ public class ProductController {
     public String delete(@PathVariable("id") Long id){
         productService.deleteProduct(id);
         return "redirect:/products";
-
     }
 
 }

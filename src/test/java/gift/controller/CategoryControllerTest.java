@@ -7,10 +7,8 @@ import gift.filter.AuthFilter;
 import gift.filter.LoginFilter;
 import gift.repository.token.TokenRepository;
 import gift.service.CategoryService;
-import gift.service.ProductService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -22,13 +20,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.*;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 @WebMvcTest(CategoryController.class)
 class CategoryControllerTest {
@@ -88,7 +84,6 @@ class CategoryControllerTest {
     void 카테고리_단건_조회_API_테스트() throws Exception{
         //given
         CategoryResponseDto categoryResponseDto = new CategoryResponseDto(1L, "상품권", "#0000");
-
 
         given(categoryService.findOneCategoryById(categoryResponseDto.id())).willReturn(categoryResponseDto);
 
