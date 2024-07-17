@@ -42,7 +42,6 @@ class CategoryControllerTest {
     @MockBean
     CategoryService categoryService;
 
-
     @MockBean
     TokenRepository tokenRepository;
 

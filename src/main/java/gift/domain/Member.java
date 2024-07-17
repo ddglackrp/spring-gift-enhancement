@@ -63,5 +63,4 @@ public class Member {
     public List<Wish> getWishList() {
         return wishList;
     }
-
 }
