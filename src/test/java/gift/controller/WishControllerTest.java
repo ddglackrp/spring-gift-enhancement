@@ -2,11 +2,11 @@ package gift.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gift.domain.*;
+import gift.domain.member.Member;
 import gift.dto.request.WishCreateRequest;
 import gift.dto.request.WishDeleteRequest;
 import gift.dto.request.WishEditRequest;
 import gift.dto.response.WishResponseDto;
-import gift.exception.EntityNotFoundException;
 import gift.exception.UnAuthorizationException;
 import gift.filter.AuthFilter;
 import gift.filter.LoginFilter;

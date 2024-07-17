@@ -1,5 +1,6 @@
-package gift.domain;
+package gift.domain.member;
 
+import gift.domain.Wish;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -18,6 +19,9 @@ public class Member {
     @Column(nullable = false)
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private ROLE role;
+
     @OneToMany(mappedBy = "member")
     private List<Wish> wishList = new ArrayList<>();
 
@@ -27,6 +31,7 @@ public class Member {
     private Member(Builder builder) {
         this.email = builder.email;
         this.password = builder.password;
+        this.role = ROLE.ROLE_USER;
     }
 
     public static class Builder {
@@ -58,6 +63,10 @@ public class Member {
 
     public String getPassword() {
         return password;
+    }
+
+    public ROLE getRole() {
+        return role;
     }
 
     public List<Wish> getWishList() {

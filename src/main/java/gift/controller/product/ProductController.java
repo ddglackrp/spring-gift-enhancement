@@ -9,6 +9,7 @@ import gift.service.CategoryService;
 import gift.service.OptionService;
 import gift.service.ProductService;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -20,6 +21,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("products")
+@Slf4j
 public class ProductController {
 
     private final ProductService productService;
@@ -37,6 +39,8 @@ public class ProductController {
     @GetMapping()
     public String getAll(Model model,
                          @PageableDefault(size = 5, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable){
+
+        log.info("뭐야 진짜");
         List<ProductResponseDto> productDtos = productService.findProducts(pageable);
         model.addAttribute("productDtos", productDtos);
         return "manager";

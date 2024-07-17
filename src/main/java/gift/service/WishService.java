@@ -1,6 +1,6 @@
 package gift.service;
 
-import gift.domain.Member;
+import gift.domain.member.Member;
 import gift.domain.Product;
 import gift.domain.Wish;
 import gift.dto.response.WishResponseDto;

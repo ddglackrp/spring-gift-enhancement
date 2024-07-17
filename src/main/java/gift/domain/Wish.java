@@ -1,5 +1,6 @@
 package gift.domain;
 
+import gift.domain.member.Member;
 import gift.utils.TimeStamp;
 import jakarta.persistence.*;
 

@@ -1,6 +1,6 @@
 package gift.repository.member;
 
-import gift.domain.Member;
+import gift.domain.member.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

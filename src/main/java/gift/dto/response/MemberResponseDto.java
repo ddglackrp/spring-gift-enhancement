@@ -1,6 +1,6 @@
 package gift.dto.response;
 
-import gift.domain.Member;
+import gift.domain.member.Member;
 
 public record MemberResponseDto(Long id, String email, String password) {
 

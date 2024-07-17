@@ -9,9 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +25,25 @@ public class AuthController {
     public AuthController(AuthService authService, TokenService tokenService) {
         this.authService = authService;
         this.tokenService = tokenService;
+    }
+
+    @GetMapping("/login")
+    public String loginForm(){
+        return "login/loginForm";
+    }
+
+    @GetMapping("/join")
+    public String joinForm(@ModelAttribute MemberRequestDto memberRequestDto,
+                           Model model){
+
+        model.addAttribute("joinForm", memberRequestDto);
+        return "login/joinForm";
+    }
+
+    @PostMapping("/join")
+    public String join(@ModelAttribute @Valid MemberRequestDto memberRequestDto){
+        authService.memberJoin(memberRequestDto);
+        return "redirect:/";
     }
 
     @ResponseBody

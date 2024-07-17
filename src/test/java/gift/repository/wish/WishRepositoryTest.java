@@ -1,6 +1,6 @@
 package gift.repository.wish;
 
-import gift.domain.Member;
+import gift.domain.member.Member;
 import gift.domain.Product;
 import gift.domain.Wish;
 import jakarta.persistence.EntityManager;

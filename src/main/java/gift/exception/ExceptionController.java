@@ -37,12 +37,12 @@ public class ExceptionController {
         return new ResponseEntity<>(errorResult, HttpStatus.BAD_REQUEST);
     }
 
-    @ResponseBody
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResult> errorHandler(Exception e) {
-        ErrorResult errorResult = new ErrorResult("500", e.getMessage());
-        return new ResponseEntity<>(errorResult, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+//    @ResponseBody
+//    @ExceptionHandler(Exception.class)
+//    public ResponseEntity<ErrorResult> errorHandler(Exception e) {
+//        ErrorResult errorResult = new ErrorResult("500", e.getMessage());
+//        return new ResponseEntity<>(errorResult, HttpStatus.INTERNAL_SERVER_ERROR);
+//    }
 
     @ResponseBody
     @ExceptionHandler(MemberNotFoundException.class)

@@ -1,6 +1,6 @@
 package gift.service;
 
-import gift.domain.Member;
+import gift.domain.member.Member;
 import gift.dto.request.MemberRequestDto;
 import gift.dto.response.MemberResponseDto;
 import gift.exception.EmailDuplicationException;
