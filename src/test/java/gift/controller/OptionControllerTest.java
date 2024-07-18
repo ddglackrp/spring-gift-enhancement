@@ -44,7 +44,7 @@ class OptionControllerTest {
                 .addFilter(new LoginFilter(tokenRepository))
                 .build();
 
-        mockMvc.perform(get("/option"))
+        mockMvc.perform(get("/options"))
                 .andExpect(redirectedUrl("/home"))
                 .andExpect(status().is3xxRedirection())
                 .andDo(print());
@@ -56,7 +56,7 @@ class OptionControllerTest {
         //given
 
         //expected
-        mvc.perform(post("/option/delete/{id}", 1))
+        mvc.perform(post("/options/delete/{id}", 1))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/products"))
                 .andExpect(redirectedUrl("/products"))

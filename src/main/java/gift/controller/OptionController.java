@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("option")
+@RequestMapping("options")
 public class OptionController {
 
     private final OptionService optionService;

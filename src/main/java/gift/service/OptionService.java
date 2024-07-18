@@ -40,9 +40,7 @@ public class OptionService {
                 );
 
         Option option = new Option(optionRequestDto.optionName(), optionRequestDto.optionQuantity());
-
         option.addProduct(product);
-
         Option savedOption = optionRepository.save(option);
 
         return OptionResponseDto.from(savedOption);
